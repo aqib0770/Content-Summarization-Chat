@@ -20,7 +20,7 @@ url = st.text_input("URL",label_visibility="collapsed")
 
 with st.sidebar:
    
-    google_api_key = st.text_input("Enter your API key", value="", type="password")
+    google_api_key = st.text_input("Enter Gemini API key", value="", type="password")
     st.markdown("Get your API key from [here](https://aistudio.google.com/prompts/new_chat)")
     video_info = st.checkbox("Add video metadata", value=False)
     lang = st.selectbox("Transcript Language", ["en", "hi"], index=0)
