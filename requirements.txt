@@ -10,3 +10,4 @@ langchain-yt-dlp
 youtube-transcript-api
 unstructured
 langchain-google-genai
+faiss-cpu
