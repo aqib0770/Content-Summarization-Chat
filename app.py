@@ -15,6 +15,7 @@ import time
 st.set_page_config(page_title="Summarize & Chat Hub")
 st.title("Summarize and Chat with YouTube & Web Content")
 st.subheader("Enter the URL")
+st.write("Please enter URL with proper content or transcript to summarize and ask questions")
 url = st.text_input("URL",label_visibility="collapsed")
 
 with st.sidebar:
