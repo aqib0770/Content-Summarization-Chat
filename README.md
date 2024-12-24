@@ -28,8 +28,8 @@ Powered by **LangChain**, **Google Gemini API**, and **yt_dlp**, this tool trans
 ## 💻 **Setup Instructions**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/aqib0770/Content-Summarization-QA.git
-   cd Content-Summarization-QA
+   git clone https://github.com/aqib0770/Content-Summarization-Chat.git
+   cd Content-Summarization-Chat
    ```
 2. Install dependencies:
    ```bash
