@@ -11,7 +11,12 @@ from langchain.chains import create_retrieval_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_yt_dlp.youtube_loader import YoutubeLoaderDL
 from langchain_core.output_parsers import StrOutputParser
+from dotenv import load_dotenv
 
+load_dotenv()
+os.environ['LANGCHAIN_API_KEY'] = st.secrets['LANGCHAIN_API_KEY']
+os.environ['LANGCHAIN_TRACING_V2'] = "true"
+os.environ['LANGCHAIN_PROJECT'] = st.secrets('LANGCHAIN_PROJECT')
 
 st.set_page_config(page_title="Summarize & Chat Hub")
 st.title("Summarize and Chat with YouTube & Web Content")
