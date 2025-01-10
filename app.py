@@ -62,21 +62,27 @@ qa_prompt = ChatPromptTemplate.from_template(
 def get_loader_obj(url, lang, video_info):
     """Load content from the given URL."""
     metadata = None
-    if "youtube.com" in url:
-        if video_info:
-            loader = YoutubeLoader.from_youtube_url(youtube_url=url, language=lang)
-            metadata = YoutubeLoaderDL.from_youtube_url(url, add_video_info=video_info).load()
+    try:
+        if "youtube.com" in url:        
+            if video_info:
+                loader = YoutubeLoader.from_youtube_url(youtube_url=url, language=lang)
+                metadata = YoutubeLoaderDL.from_youtube_url(url, add_video_info=video_info).load()
+            else:
+                loader = YoutubeLoader.from_youtube_url(youtube_url=url, add_video_info=video_info)
         else:
-            loader = YoutubeLoader.from_youtube_url(youtube_url=url, add_video_info=video_info)
-    else:
-        loader = UnstructuredURLLoader(
-            urls=[url],
-            ssl_verified=False,
-            headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0"}
-        )
-    docs = loader.load()
-    return docs, metadata
-
+            loader = UnstructuredURLLoader(
+                urls=[url],
+                ssl_verified=False,
+                headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0"}
+            )
+        docs = loader.load()
+        return docs, metadata
+    except ValueError as ve:
+        st.error(f"Validation error: {ve}")
+        return None, None
+    except Exception as e:
+        st.err(f"Exception: {e}")
+        return None, None
 
 def create_vector_embeddings(docs, api_key):
     """Create FAISS vector embeddings."""
