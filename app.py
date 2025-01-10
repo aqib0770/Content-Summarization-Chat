@@ -79,10 +79,9 @@ def get_loader_obj(url, lang, video_info):
         return docs, metadata
     except ValueError as ve:
         st.error(f"Validation error: {ve}")
+        st.write("Please enter a valid URL (YouTube or Website) Example: https://www.youtube.com/watch?v=video_id")
         return None, None
-    except Exception as e:
-        st.err(f"Exception: {e}")
-        return None, None
+
 
 def create_vector_embeddings(docs, api_key):
     """Create FAISS vector embeddings."""
